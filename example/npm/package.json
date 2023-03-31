@@ -1,0 +1,7 @@
+{
+  "name": "example_project",
+  "version": "v1.0.0",
+  "description": "example.",
+  "module": "esm/main.js",
+  "main": "umd/main.js"
+}
