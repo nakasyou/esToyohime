@@ -4,10 +4,13 @@ import exists from "../utils/exists.ts";
 import npmModule from "./npm/index.ts";
 
 function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
+  const { banner, footer } = options;
   return {
     entryPoints: [options.src],
     bundle: true,
-    plugins: options.plugins
+    plugins: options.plugins,
+    banner,
+    footer,
   }
 }
 export async function build(options: StrictOptions): Promise<void>{

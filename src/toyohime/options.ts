@@ -1,6 +1,6 @@
 import * as esbuild from "https://deno.land/x/esbuild@v0.17.14/mod.js";
 
-export type Options = {
+export interface Options {
   src?: string;
   esmDist?: string;
   minEsmDist?: string;
@@ -15,8 +15,10 @@ export type Options = {
   importmapPath?: string;
   tsconfigPath?: string;
   globalName?: string;
+  banner?: Record<string,string>;
+  footer?: Record<string,string>;
 };
-export type StrictOptions = {
+export interface StrictOptions {
   src: string;
   esmDist: string;
   minEsmDist: string;
@@ -31,6 +33,8 @@ export type StrictOptions = {
   importmapPath: string;
   tsconfigPath: string;
   globalName: string;
+  banner: Record<string,string>;
+  footer: Record<string,string>;
 };
 export const defaultOptions: StrictOptions = {
   src: "./src/index.ts",
@@ -49,9 +53,11 @@ export const defaultOptions: StrictOptions = {
   importmapPath: "",
   tsconfigPath: "./tsconfig.json",
   globalName: "project",
+  banner: {},
+  footer: {},
 }
 export function parseOptions(options: Options): StrictOptions {
   const result=Object.assign({}, defaultOptions, options);
-  options.npm=Object.assign({}, defaultOptions.npm,options.npm);
+  result.npm=Object.assign({}, defaultOptions.npm,options.npm);
   return result;
 }
