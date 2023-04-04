@@ -56,6 +56,6 @@ export const defaultOptions: StrictOptions = {
 }
 export function parseOptions(options: Options): StrictOptions {
   const result=Object.assign({}, defaultOptions, options);
-  options.npm=Object.assign({}, defaultOptions.npm,options.npm);
+  result.npm=Object.assign({}, defaultOptions.npm,options.npm);
   return result;
 }
