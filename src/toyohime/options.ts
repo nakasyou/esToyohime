@@ -53,6 +53,8 @@ export const defaultOptions: StrictOptions = {
   importmapPath: "",
   tsconfigPath: "./tsconfig.json",
   globalName: "project",
+  banner: {},
+  footer: {},
 }
 export function parseOptions(options: Options): StrictOptions {
   const result=Object.assign({}, defaultOptions, options);
