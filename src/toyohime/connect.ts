@@ -20,6 +20,9 @@ export default async function ({ options }: Toyohime) {
         case "npm":
           tasks.push(actions.npm(options));
           break;
+        case "dnt":
+          tasks.push(actions.dnt(options));
+          break;
         default:
           break;
       }
