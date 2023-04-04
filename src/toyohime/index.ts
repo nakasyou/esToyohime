@@ -20,3 +20,8 @@ class Toyohime {
 }
 
 export default Toyohime;
+export {
+  type Options,
+  parseOptions,
+  type StrictOptions,
+}
