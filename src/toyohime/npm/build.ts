@@ -28,7 +28,6 @@ export default async function(options: StrictOptions, esbuildOptions: BuildOptio
   await esbuild.build(esmOptions);
   esbuild.stop();
 
-
   await esbuild.build(Object.assign({},esbuildOptions,{
     format: "iife",
     outfile: path.join(options.npmDist,"usm","main.js"),
