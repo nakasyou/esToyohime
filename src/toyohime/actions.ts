@@ -4,16 +4,33 @@ import exists from "../utils/exists.ts";
 import npmModule from "./npm/index.ts";
 import * as dntDeno from "https://deno.land/x/dnt@0.33.1/mod.ts";
 import * as npmTool from "./npm/index.ts";
+import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.6.0/mod.ts";
 
+function isString(value: any): boolean {
+  if (typeof value === "string" || value instanceof String) {
+    return true;
+  } else {
+    return false;
+  }
+}
 function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
   const { banner, footer } = options;
-  return {
+  
+  const esbuildOptions = {
     entryPoints: [options.src],
     bundle: true,
     plugins: options.plugins,
     banner,
     footer,
   }
+  
+  if(!esbuildOptions.plugins) esbuildOptions.plugins=[];
+  
+  esbuildOptions.plugins.push(denoPlugin({
+    importMapURL: options.importmapPath,
+    loader: "native",
+  }));
+  return esbuildOptions;
 }
 export async function build(options: StrictOptions): Promise<void>{
   const esbuildOptions = options2esbuild(options);
