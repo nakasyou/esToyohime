@@ -22,3 +22,9 @@ export default async function(options: StrictOptions, esbuildOptions: BuildOptio
   
   await build(options,esbuildOptions)
 }
+export {
+  emptydir,
+  license,
+  packageJson,
+  build,
+}
