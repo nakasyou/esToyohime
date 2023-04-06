@@ -10,13 +10,6 @@ export default async function(options: StrictOptions, esbuildOptions: BuildOptio
   esbuildOptions = Object.assign({}, esbuildOptions, {
     minify: true,
   });
-  if(!esbuildOptions.plugins) esbuildOptions.plugins=[];
-  const importmapPath = options.importmapPath==="" ? void(0) : options.importmapPath;
-  esbuildOptions.plugins.push(denoPlugin({
-    importMapURL: importmapPath,
-    loader: "native",
-  }));
-  
   const esmOptions=Object.assign({}, esbuildOptions, {
     format: "esm",
     outfile: path.join(options.npmDist,"esm","main.js")
