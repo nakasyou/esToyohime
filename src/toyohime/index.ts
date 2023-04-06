@@ -4,6 +4,7 @@ import {
   type StrictOptions
 } from "./options.ts";
 import connect from './connect.ts';
+import * as npmTool from "./npm/index.ts";
 
 class Toyohime {
   options: StrictOptions;
