@@ -1,1 +1,1 @@
-export default "nakasyou!";
+export default "nakasyou!!";
