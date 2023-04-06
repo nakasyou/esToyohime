@@ -17,6 +17,7 @@ export interface Options {
   globalName?: string;
   banner?: Record<string,string>;
   footer?: Record<string,string>;
+  compilerOptions?: Record<string,any>;
 };
 export interface StrictOptions {
   src: string;
@@ -35,6 +36,7 @@ export interface StrictOptions {
   globalName: string;
   banner: Record<string,string>;
   footer: Record<string,string>;
+  compilerOptions: Record<string,any>;
 };
 export const defaultOptions: StrictOptions = {
   src: "./src/index.ts",
@@ -55,6 +57,7 @@ export const defaultOptions: StrictOptions = {
   globalName: "project",
   banner: {},
   footer: {},
+  compilerOptions: {},
 }
 export function parseOptions(options: Options): StrictOptions {
   const result=Object.assign({}, defaultOptions, options);
