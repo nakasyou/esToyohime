@@ -34,12 +34,15 @@ function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
 }
 export async function build(options: StrictOptions): Promise<void>{
   const esbuildOptions = options2esbuild(options);
-  Object.assign(esbuildOptions,{
-    minify: true,
-    outfile: options.minEsmDist,
-  });
-  await esbuild.build(esbuildOptions);
-  esbuild.stop();
+  for(const format of options.formats){
+    Object.assign(esbuildOptions,{
+      minify: true,
+      outfile: options.dist.min[format],
+      format: format,
+    });
+    await esbuild.build(esbuildOptions);
+    esbuild.stop();
+  }
 }
 export async function watch(options: StrictOptions): Promise<void>{
   const esbuildOptions = options2esbuild(options);

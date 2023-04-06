@@ -2,8 +2,16 @@ import * as esbuild from "https://deno.land/x/esbuild@v0.17.14/mod.js";
 
 export interface Options {
   src?: string;
-  esmDist?: string;
-  minEsmDist?: string;
+  dist?: {
+    min: {
+      esm: "esm.min.js",
+      iife: "iife.min.js",
+      cjs: "cjs.min.js",
+    },
+    esm: "esm.js",
+    iife: "iife.js",
+    cjs: "cjs.js",
+  };
   readmeText?: string;
   readmePath?: string;
   licenseText?: string;
@@ -18,11 +26,20 @@ export interface Options {
   banner?: Record<string,string>;
   footer?: Record<string,string>;
   compilerOptions?: Record<string,any>;
+  formats?: ("iife" | "cjs" | "esm")[];
 };
 export interface StrictOptions {
   src: string;
-  esmDist: string;
-  minEsmDist: string;
+  dist: {
+    min: {
+      esm: string,
+      iife: string,
+      cjs: string,
+    },
+    esm: string,
+    iife: string,
+    cjs: string,
+  };
   readmeText: string;
   readmePath: string;
   licenseText: string;
@@ -37,11 +54,20 @@ export interface StrictOptions {
   banner: Record<string,string>;
   footer: Record<string,string>;
   compilerOptions: Record<string,any>;
+  formats: ("iife" | "cjs" | "esm")[];
 };
 export const defaultOptions: StrictOptions = {
   src: "./src/index.ts",
-  esmDist: "./dist/esm.js",
-  minEsmDist: "./dist/esm.min.js",
+  dist: {
+    min: {
+      esm: "esm.min.js",
+      iife: "iife.min.js",
+      cjs: "cjs.min.js",
+    },
+    esm: "esm.js",
+    iife: "iife.js",
+    cjs: "cjs.js",
+  },
   readmeText: "# esToyohime project\nthis project use esToyohime!!",
   readmePath: "README.md",
   licenseText: "no license found...",
@@ -58,6 +84,7 @@ export const defaultOptions: StrictOptions = {
   banner: {},
   footer: {},
   compilerOptions: {},
+  formats: ["esm"],
 }
 export function parseOptions(options: Options): StrictOptions {
   const result=Object.assign({}, defaultOptions, options);
