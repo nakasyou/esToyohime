@@ -1,7 +1,6 @@
 import { type BuildOptions } from "https://deno.land/x/esbuild@v0.17.14/mod.js";
 import { type StrictOptions } from "../options.ts";
 import * as esbuild from "https://deno.land/x/esbuild@v0.17.14/mod.js";
-import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.6.0/mod.ts";
 import * as path from "https://deno.land/std@0.181.0/path/mod.ts";
 import dts from "https://esm.sh/esbuild-plugin-d.ts@v1.1.0";
 const { dtsPlugin } = dts;
