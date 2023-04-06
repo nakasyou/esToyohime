@@ -52,6 +52,6 @@ export async function dnt(options: StrictOptions): Promise<void>{
       deno: true,
     },
     package: options.npm,
-    options: options.compilerOptions,
+    compilerOptions: options.compilerOptions,
   });
 }
