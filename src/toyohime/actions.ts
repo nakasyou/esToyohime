@@ -23,6 +23,7 @@ function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
     importMapURL: importmapPath,
     loader: "native",
   }));
+  return esbuildOptions;
 }
 export async function build(options: StrictOptions): Promise<void>{
   const esbuildOptions = options2esbuild(options);

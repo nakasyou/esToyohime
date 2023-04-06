@@ -8,7 +8,7 @@ const toyohime: Toyohime = new Toyohime({
   npm: {
     name: "example_project",
     version: "v1.0.0",
-    description: "example."
+    description: "example.",
   },
   readmeText: await Deno.readTextFile("./example/README.md"),
   licenseText: await Deno.readTextFile("./example/LICENSE"),

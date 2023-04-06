@@ -1,5 +1,5 @@
 {
   "tasks": {
-    "example": "deno run -A example/build.ts --dnt"
+    "example": "deno run -A example/build.ts --watch"
   }
 }
