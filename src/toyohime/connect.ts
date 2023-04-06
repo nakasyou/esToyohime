@@ -3,7 +3,7 @@ import * as flags from "https://deno.land/std@0.181.0/flags/mod.ts";
 import * as actions from "./actions.ts";
 
 export default async function ({ options }: Toyohime) {
-  const modes = ["build","watch","npm"];
+  const modes = ["build","watch","npm","dnt"];
   const args = flags.parse(Deno.args, {
     boolean: modes,
   });

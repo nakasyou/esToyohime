@@ -2,7 +2,7 @@ import { type StrictOptions } from "./options.ts";
 import * as esbuild from "https://deno.land/x/esbuild@v0.17.14/mod.js";
 import exists from "../utils/exists.ts";
 import npmModule from "./npm/index.ts";
-import * as dnt from "https://deno.land/x/dnt/mod.ts";
+import * as dntDeno from "https://deno.land/x/dnt@0.33.1/mod.ts";
 
 function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
   const { banner, footer } = options;
@@ -37,8 +37,8 @@ export async function npm(options: StrictOptions): Promise<void>{
   await npmModule(options,esbuildOptions);
 }
 export async function dnt(options: StrictOptions): Promise<void>{
-  await emptyDir(options.npmDist);
-  await build({
+  await dntDeno.emptyDir(options.npmDist);
+  await dntDeno.build({
     entryPoints: [options.src],
     outDir: options.npmDist,
     shims: {
