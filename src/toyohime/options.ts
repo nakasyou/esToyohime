@@ -12,7 +12,7 @@ export interface Options {
   version?: string;
   npm?: object;
   pligins?: Array<esbuild.Plugin>;
-  importmapPath?: string;
+  importmapPath?: void | URL;
   tsconfigPath?: string;
   globalName?: string;
   banner?: Record<string,string>;
@@ -31,7 +31,7 @@ export interface StrictOptions {
   version: string;
   npm: object;
   plugins: Array<esbuild.Plugin>;
-  importmapPath: string;
+  importmapPath: void | URL;
   tsconfigPath: string;
   globalName: string;
   banner: Record<string,string>;
@@ -52,7 +52,7 @@ export const defaultOptions: StrictOptions = {
     description: "this project use esToyohime"
   },
   plugins: [],
-  importmapPath: "",
+  importmapPath: void(0),
   tsconfigPath: "./tsconfig.json",
   globalName: "project",
   banner: {},

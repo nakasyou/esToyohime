@@ -6,6 +6,13 @@ import * as dntDeno from "https://deno.land/x/dnt@0.33.1/mod.ts";
 import * as npmTool from "./npm/index.ts";
 import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.6.0/mod.ts";
 
+function isString(value: any): boolean {
+  if (typeof value === "string" || value instanceof String) {
+    return true;
+  } else {
+    return false;
+  }
+}
 function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
   const { banner, footer } = options;
   
@@ -18,9 +25,9 @@ function options2esbuild(options: StrictOptions): esbuild.BuildOptions{
   }
   
   if(!esbuildOptions.plugins) esbuildOptions.plugins=[];
-  const importmapPath = options.importmapPath==="" ? void(0) : options.importmapPath;
+  
   esbuildOptions.plugins.push(denoPlugin({
-    importMapURL: importmapPath,
+    importMapURL: options.importmapPath,
     loader: "native",
   }));
   return esbuildOptions;

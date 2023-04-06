@@ -14,6 +14,7 @@ const toyohime: Toyohime = new Toyohime({
   licenseText: await Deno.readTextFile("./example/LICENSE"),
   tsconfigPath: "./example/tsconfig.json",
   globalName: "project",
+  importmapPath: new URL("./import_map.json",import.meta.url),
 });
 
 await toyohime.connect({});
